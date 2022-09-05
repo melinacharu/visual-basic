@@ -1,0 +1,24 @@
+Sub Main()
+        Dim StudentName(4), SearchName As String
+        Dim Marks(4) As Integer
+        Dim Row As Integer
+
+        For Row = 0 To 4
+            Console.WriteLine("Enter name of student {0} ", Row + 1)
+            StudentName(Row) = Console.ReadLine()
+            Console.WriteLine("Enter mark for student {0} term 1", Row + 1)
+            Marks(Row) = CInt(Console.ReadLine())
+        Next
+
+        Console.Write("Search for student name: ")
+        SearchName = Console.ReadLine()
+
+        For Row = 0 To 4
+            If SearchName = StudentName(Row) Then
+                Console.WriteLine("Name: {0}", StudentName(Row))
+                Console.WriteLine("Mark: {0}", Marks(Row))
+            End If
+        Next
+
+        Console.ReadLine()
+    End Sub
