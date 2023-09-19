@@ -1,0 +1,146 @@
+'Linear search
+Module Program
+    Sub Main()
+        Dim Data(9) As String
+        Dim SData, Pos, Index As Integer
+        Dim Found As Boolean
+
+        For Index = 0 To 9
+            Console.Write("Enter name: ")
+            Data(Index) = LCase(Console.ReadLine())
+        Next
+
+        Console.Write("Enter data to search for: ")
+        SData = LCase(Console.ReadLine())
+        Found = False
+        Index = 0
+        Do
+            If SData = Data(Index) Then
+                Found = True
+                Pos = Index + 1
+            Else
+                Index += 1
+            End If
+        Loop Until (Found = True) Or (Index = 10)
+
+        If Found = True Then
+            Console.WriteLine("Position: " & Pos)
+        Else
+            Console.WriteLine("Not Found")
+        End If
+
+    End Sub
+End Module
+
+'Insertion sort
+    Sub Main()
+        Dim Values() As Integer = {7, 5, 6, 11, 4}
+        Dim Index, i, Count, Temp As Integer
+
+        For i = 0 To 4
+            Console.Write(Values(i))
+            Console.Write("  ")
+        Next
+        Console.WriteLine()
+
+        For i = 1 To 4
+            Count = 0
+            'Console.WriteLine(Count)
+            While i > Count And i <= 4
+                If Values(i) < Values(Count) Then
+                    Temp = Values(i)
+                    Index = i
+                    While Index > Count
+                        Values(Index) = Values(Index - 1)
+                        Index = Index - 1
+                    End While
+                    Values(Count) = Temp
+                End If
+                Count = Count + 1
+            End While
+        Next
+        Console.WriteLine("After sorting")
+        For i = 0 To 4
+            Console.Write(Values(i) & "  ")
+        Next
+    End Sub
+End Module
+
+'Binary search
+    Sub Main()
+        Dim List(9) As String
+        Dim Last, First, index, SData, Middle As Integer
+        Dim Found As Boolean
+        Last = 9
+        First = 0
+        Found = False
+
+        For index = 0 To 9
+            Console.Write("Enter name: ")
+            List(index) = LCase(Console.ReadLine())
+        Next
+
+        Console.Write("Enter data to search for: ")
+        SData = LCase(Console.ReadLine())
+
+        While (Found = False) And First <> Last
+            Middle = Int((First + Last) / 2)
+            If List(Middle) = SData Then
+                Found = True
+            End If
+
+            If List(Middle) > SData Then
+                Last = Middle - 1
+            Else
+                First = Middle + 1
+            End If
+        End While
+
+        If Found = True Then
+            Console.WriteLine("Position: " & Middle)
+        Else
+            Console.WriteLine("Item not present in array")
+        End If
+    End Sub
+End Module
+
+#EXAMPLE BubbleSort#
+Sub Main()
+        'Create List of Random Integers
+        Dim List(26), index As Integer
+
+        For index = 0 To 26
+            Randomize()
+            List(index) = Rnd() * 100 + 1
+        Next
+
+        For index = 0 To 26
+            Console.Write(List(index) & " ")
+        Next
+
+        Call BubbleSortNumber(List)
+
+        For index = 0 To 26
+            Console.Write(List(index) & " ")
+        Next
+
+        Console.ReadLine()
+    End Sub
+
+    Sub BubbleSortNumber(ByRef x() As Integer)
+        Dim swaps As Boolean = True
+        Dim i As Integer
+        While swaps = True
+            swaps = False
+            For i = 0 To 24
+                If x(i) > x(i + 1) Then
+                    Dim temp As Integer = x(i + 1)
+                    x(i + 1) = x(i)
+                    x(i) = temp
+                    swaps = True
+                End If
+            Next
+        End While
+    End Sub
+End Module
+
